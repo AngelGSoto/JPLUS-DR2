@@ -106,7 +106,7 @@ SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_APER_6_0[jplus::rSDSS] <= 0.2 AND
 
 
 * TODO JPLUS DR2 final              
-**  6Arcsec 
+** 6Arcsec 
 
 + I ran the query and obtained the file: =72080.csv=.
 + ~Topcat: Halpha_emitters_threeerror.dat~
@@ -420,7 +420,7 @@ Here is nor necessary apply the error criterion in r, F660 and i filter nether =
 already is incorporated in the SQL query.
 
 
-** PCA 
+*** PCA 
 
 I used the program =pca-jplusdr2_3class_predict.py= to classify, implemented directly in 
 the table =Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab=
@@ -431,7 +431,7 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
 
    : PN=236, SySt=2098, 7 macth with HASH.
 
-*** Cleaning:
+**** Cleaning:
  + With the program =JPLUS_cleaning_table.py=, we will clean the PCA results. It is apply the mask_flags and 
    error in all broad-band.
 
@@ -525,7 +525,7 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
 1. mask and error broad filters: PN = 80 and SySt = 126 (it was a big reduction).
 2. Writing the coordinate to make cross-matching with HASH. PN: only 5 matches. No matches SySt.
  
-*** JPLUS color criteria
+**** JPLUS color criteria
  
   I putted the objects of the table =/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad.tab=
   in my color-color diagrams. I got very nice results, they are located in the PN regions, however 
