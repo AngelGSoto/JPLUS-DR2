@@ -1,3 +1,5 @@
+* Export options
+#+TITLE: description.org
 #+AUTHOR: Luis A. Gutierrez Soto 
 #+EMAIL: gsoto.angel@gmail.com
 #+DATE: 23/09/2010
@@ -6,15 +8,12 @@
 
 I used this query to get Halpha emitters: 
 
-#+BIND:
-teste
-#+BIND:
 
-#+OPTIONS: teste
+- Descartado 
 
-Descartado -- SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_AUTO[jplus::rSDSS] <= 0.2 AND MAG_ERR_AUTO[jplus::J0660] <= 0.2 AND MAG_ERR_AUTO[jplus::iSDSS] <= 0.2 AND MAG_AUTO[jplus::rSDSS] < 20.0 AND MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::J0660] >= 0.22*(MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::iSDSS]) + 0.55
+SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_AUTO[jplus::rSDSS] <= 0.2 AND MAG_ERR_AUTO[jplus::J0660] <= 0.2 AND MAG_ERR_AUTO[jplus::iSDSS] <= 0.2 AND MAG_AUTO[jplus::rSDSS] < 20.0 AND MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::J0660] >= 0.22*(MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::iSDSS]) + 0.55
 
-Mejorando el criterio (visualamente) para seleccionar los Halpha emitters. Encontré este criterio de color: y =  0.25*x_new + 0.5
+- Mejorando el criterio (visualamente) para seleccionar los Halpha emitters. Encontré este criterio de color: y =  0.25*x_new + 0.5
 
 1. SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_AUTO[jplus::rSDSS] <= 0.2 AND MAG_ERR_AUTO[jplus::J0660] <= 0.2 AND MAG_ERR_AUTO[jplus::iSDSS] <= 0.2 AND MAG_AUTO[jplus::rSDSS] < 20.0 AND MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::J0660] >= 0.25*(MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::iSDSS]) + 0.5
 
