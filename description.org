@@ -108,10 +108,12 @@ SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_APER_6_0[jplus::rSDSS] <= 0.2 AND
 * TODO JPLUS DR2 final              
 **  6Arcsec 
 
-- I ran the query and obtained the file: =72080.csv=.
-- ~Topcat: Halpha_emitters_threeerror.dat~
-- 24048 objectos.
-- =Varios-programs/JPLUS_DR2_HaphaVii_table.py= para crear el archivo =Halpha_emitters_threeerror.tab= (intente ecsv, nuevo formato de archivo, parecen ser mejor que el punto .tab, cortesia del profe Will).
++ I ran the query and obtained the file: =72080.csv=.
++ ~Topcat: Halpha_emitters_threeerror.dat~
++ 24048 objectos.
++ Run the follows script to write the table in a more adequate file.  Para crear el archivo =Halpha_emitters_threeerror.tab= (intente ecsv, nuevo formato de archivo, parecen ser mejor que el punto .tab, cortesia del profe Will).
+
+: python ../../Varios-programs/JPLUS_DR2_HaphaVii_table.py Halpha_emitters_threeerror --savefile --debug
 
 #+BEGIN_SRC python : change the format of output file from JPLUS
 from astropy.io import fits
@@ -281,8 +283,10 @@ if args.savefile:
 
 #+END_SRC
 
+#+RESULTS:
+file:Halpha_emitters_threeerror.tab
 
-- =JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror -> Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab= (tuve que volver a .tab, no funcionó con .ecsv)
+ - =JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror -> Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab= (tuve que volver a .tab, no funcionó con .ecsv)
  : 5727 objectos.
 
 *** PCA 
