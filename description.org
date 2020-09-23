@@ -286,12 +286,12 @@ if args.savefile:
 #+RESULTS:
 file:aper6_mag_idr/Halpha_emitters_threeerror.tab
 
-+ For cleaning
++ For cleaning:
 
-Whit this script only it is limit the Viironen colors, not select mag with values 99. and it is apply 
-the Flags.
+    With this script only it is limit the Viironen colors, not select mag with values 99. and it is apply 
+    the Flags.
 
-: python ../../varios-programas/JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror 
+    : python ../../varios-programas/JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror 
 
 #+BEGIN_SRC python : cleaning the sample
 from astropy.io import fits
