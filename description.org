@@ -97,14 +97,14 @@ SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_APER_6_0[jplus::rSDSS] <= 0.2 AND
 -- Escribí un programa para limpiar las muestras depués de aplicar PCA y LDA: "JPLUS_cleaning_table.py"
 
 -- Mask and error broad-band => PNe = 75. SySt=130
-__________________________________________________________________________________
-- Apliqué LDA to "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab":
+
+- Apliqué LDA to =Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab=
 
 -- PNe = 670. SySt=2290
 
 -- Mask and error broad-band => PNe = 145. SySt=123
 
-##################################################################################
+
 * TODO JPLUS DR2 final              
 **  6Arcsec 
 
@@ -114,7 +114,7 @@ ________________________________________________________________________________
 - =Varios-programs/JPLUS_DR2_HaphaVii_table.py= para crear el archivo =Halpha_emitters_threeerror.tab= (intente ecsv, nuevo formato de archivo, parecen ser mejor que el punto .tab, cortesia del profe Will).
 
 - =JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror -> Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab= (tuve que volver a .tab, no funcionó con .ecsv)
- --- 5727 objectos.
+ : 5727 objectos.
 
 *** PCA 
 
