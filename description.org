@@ -284,10 +284,11 @@ if args.savefile:
 #+END_SRC
 
 #+RESULTS:
-file:Halpha_emitters_threeerror.tab
+file:aper6_mag_idr/Halpha_emitters_threeerror.tab
 
  - =JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror -> Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab= (tuve que volver a .tab, no funcionó con .ecsv)
- : 5727 objectos.
+ 
+: 5727 objectos.
 
 *** PCA 
 
