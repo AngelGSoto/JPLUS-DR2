@@ -432,10 +432,10 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
    : PN=236, SySt=2098, 7 macth with HASH.
 
 ** Cleaning:
- - With the program =JPLUS_cleaning_table.py=, we will to clean the PCA results. It is apply the mask_flags and 
-error in all broad-band.
+ + With the program =JPLUS_cleaning_table.py=, we will clean the PCA results. It is apply the mask_flags and 
+   error in all broad-band.
 
-~python ../../varios-programas/JPLUS_cleaning_table.py PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags --debug~
+: python ../../varios-programas/JPLUS_cleaning_table.py PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags --debug
 
 #+BEGIN_SRC python: cleaning the sample
    '''
@@ -524,7 +524,17 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
 
 1. mask and error broad filters: PN = 80 and SySt = 126 (it was a big reduction).
 2. Writing the coordinate to make cross-matching with HASH. PN: only 5 matches. No matches SySt.
-    
+ 
+** JPLUS color criteria
+ 
+  I putted the objects of the table =/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad.tab=
+  in my color-color diagrams. I got very nice results, they are located in the PN regions, however 
+  many of these objects are located in the limit I mean around of the criteria lines.
+
+  The program displays the color diagrams is
+  : python ../../varios-programas/color-diagrams-jplusdr2_automatic.py PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad
+  : The number of objects is: 80
+   
     
 *** LDA 
 I used the program default lda-jplusdr2_3class_predict.py, I used the file Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
