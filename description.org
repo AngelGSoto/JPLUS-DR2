@@ -21,17 +21,17 @@ SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_AUTO[jplus::rSDSS] <= 0.2 AND MAG
 SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_AUTO[jplus::rSDSS] <= 0.2 AND MAG_ERR_AUTO[jplus::J0660] <= 0.2 AND MAG_ERR_AUTO[jplus::iSDSS] <= 0.2 AND MAG_AUTO[jplus::rSDSS] < 20.0 AND MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::J0660] >= 0.25*(MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::iSDSS]) + 0.5
 #+END_SRC
 
-With the above SQL comand I got the file: "####.csv" lo convierto en "Halpha_emitters_threeerror.fits" or ".dat" usando Topcat (actually deve ser .dat). Only error en las filtros r, J0660 e i, y com r < 20. y desde luego un criterio que propongo para solo descragar Ha emitter usando el diagrama color de Viironen. Quizas debera usar otro de los criterios de color que propuse.
+With the above SQL comand I got the file: =####.csv= lo convierto en =Halpha_emitters_threeerror.fits= or ~.dat~ usando ~Topcat~ (actually deve ser .dat). Only error en las filtros r, J0660 e i, y com r < 20. y desde luego un criterio que propongo para solo descragar Ha emitter usando el diagrama color de Viironen. Quizas debera usar otro de los criterios de color que propuse.
 
 
-Aplicando 1) obtuve 30,683 fuentes
+Aplicando el query  obtuve 30,683 fuentes
 
 
-- Luego escribí un programa: ""varios-programs/JPLUS_DR2_HaphaVii_table.py"" para convertir el archivo .dat en .tab y manejar mejor los datos, hice esto porque en el archivo que se desacarga del sitio de J-PLUS usando ADQL, tiene la particulidad de que todos los filtros de cada avertura (auto, petro, etc) estan en una misma columna, entonces con este progroma coloco cada filtro en una determinada columna para cada apertura.
+- Luego escribí un programa: =varios-programs/JPLUS_DR2_HaphaVii_table.py= para convertir el archivo =.dat= en =.tab= y manejar mejor los datos, hice esto porque en el archivo que se desacarga del sitio de J-PLUS usando =ADQL=, tiene la particulidad de que todos los filtros de cada avertura (auto, petro, etc) estan en una misma columna, entonces con este progroma coloco cada filtro en una determinada columna para cada apertura.
 
 - Escribí otro programa para limpiar esta muestra, es decir aplicar FlAGS, Mask_FLAGS, y error, el programa es "JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror".
 
-a. Primero apliqué donde cada filtro != 99, los flags y (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5 esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab" 
+a. Primero apliqué donde cada filtro ~!= 99~, los flags y ~(tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5~ esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab" 
 
 
 - Aplicando para esta primera muestra obtuve 10,034 fuentes.
@@ -41,7 +41,7 @@ a. Primero apliqué donde cada filtro != 99, los flags y (tab['rSDSS_'+magg] - t
 -  3247 como SySt
 
 
-b. Apliqué donde cada filtro != 99,  los flags y (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5 esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. E adicional MASK_flags. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask.tab" 
+b. Apliqué donde cada filtro != 99,  los flags y ~(tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5~ esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. E adicional MASK_flags. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask.tab" 
 
 - Aplicando para esta muestra obtuve 3,912 fuentes.
 
@@ -72,26 +72,25 @@ Después de hacer cross-matching con el catálogo de PNe encontre ocho matches, 
 
 b. Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask.tab. 253 como PN. 1578 como SySt. Crosmtaching con HASH 7 coincidencias (excelente).
 
-######################################################################################################
-+          Aperture 6 Arc             ################################################################
-######################################################################################################
 
+* TODO Aperture 6 Arc            
 - Corrí el query:
+#+BEGIN_SRC query :results 
 SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_APER_6_0[jplus::rSDSS] <= 0.2 AND MAG_ERR_APER_6_0[jplus::J0660] <= 0.2 AND MAG_ERR_APER_6_0[jplus::iSDSS] <= 0.2 AND MAG_APER_6_0[jplus::rSDSS] < 20.0 AND MAG_APER_6_0[jplus::rSDSS] - MAG_APER_6_0[jplus::J0660] >= 0.25*(MAG_APER_6_0[jplus::rSDSS] - MAG_APER_6_0[jplus::iSDSS]) + 0.5
-
+#+END_SRC
 -- I obtained the file: 71906.csv.
 
-- Topcat: Halpha_emitters_threeerror.dat
-_______________________________________________________________________________
-*** Aplicando the query obtuve 22,559 fuentes
--------------------------------------------------------------------------------
+- =Topcat: Halpha_emitters_threeerror.dat=
+
++ Aplicando the query obtuve 22,559 fuentes
+-
 - varios-programs/JPLUS_DR2_HaphaVii_table.py para crear el archivo Halpha_emitters_threeerror.tab
 
 - Primero apliqué donde cada filtro != 99,  los flags y (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5 esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab"
 
 -- Obtuve 4,551 fuentes
 
--- Apliqué PCA: PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab => 194. SySt => 1822
+-- Apliqué PCA: =PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab= => 194. SySt => 1822
 
 -- Match HASH 7 objects (good)
 
@@ -109,12 +108,12 @@ ________________________________________________________________________________
 * TODO JPLUS DR2 final              
 **  6Arcsec 
 
-- I ran the query and obtained the file: 72080.csv.
-- Topcat: Halpha_emitters_threeerror.dat
+- I ran the query and obtained the file: =72080.csv=.
+- ~Topcat: Halpha_emitters_threeerror.dat~
 - 24048 objectos.
-- Varios-programs/JPLUS_DR2_HaphaVii_table.py para crear el archivo Halpha_emitters_threeerror.tab (intente ecsv, nuevo formato de archivo, parecen ser mejor que el punto .tab, cortesia del profe Will).
+- =Varios-programs/JPLUS_DR2_HaphaVii_table.py= para crear el archivo =Halpha_emitters_threeerror.tab= (intente ecsv, nuevo formato de archivo, parecen ser mejor que el punto .tab, cortesia del profe Will).
 
-- JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror -> Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab (tuve que volver a .tab, no funcionó con .ecsv)
+- =JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror -> Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab= (tuve que volver a .tab, no funcionó con .ecsv)
  --- 5727 objectos.
 
 *** PCA 
