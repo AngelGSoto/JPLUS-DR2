@@ -1,6 +1,18 @@
-#Descartado# SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_AUTO[jplus::rSDSS] <= 0.2 AND MAG_ERR_AUTO[jplus::J0660] <= 0.2 AND MAG_ERR_AUTO[jplus::iSDSS] <= 0.2 AND MAG_AUTO[jplus::rSDSS] < 20.0 AND MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::J0660] >= 0.22*(MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::iSDSS]) + 0.55
+#+AUTHOR: Luis A. Gutierrez Soto 
+#+EMAIL: gsoto.angel@gmail.com
+#+DATE: 23/09/2010
 
 * Looking for PNe in JPLUS DR2
+
+I used this query to get Halpha emitters: 
+
+#+BIND:
+teste
+#+BIND:
+
+#+OPTIONS: teste
+
+Descartado -- SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_AUTO[jplus::rSDSS] <= 0.2 AND MAG_ERR_AUTO[jplus::J0660] <= 0.2 AND MAG_ERR_AUTO[jplus::iSDSS] <= 0.2 AND MAG_AUTO[jplus::rSDSS] < 20.0 AND MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::J0660] >= 0.22*(MAG_AUTO[jplus::rSDSS] - MAG_AUTO[jplus::iSDSS]) + 0.55
 
 Mejorando el criterio (visualamente) para seleccionar los Halpha emitters. Encontré este criterio de color: y =  0.25*x_new + 0.5
 
@@ -9,7 +21,7 @@ Mejorando el criterio (visualamente) para seleccionar los Halpha emitters. Encon
 With the above SQL comand I got the file: "####.csv" lo convierto en "Halpha_emitters_threeerror.fits" or ".dat" usando Topcat (actually deve ser .dat). Only error en las filtros r, J0660 e i, y com r < 20. y desde luego un criterio que propongo para solo descragar Ha emitter usando el diagrama color de Viironen. Quizas debera usar otro de los criterios de color que propuse.
 
 Aplicando 1) obtuve 30,683 fuentes
--------------------------------------------------------------------------------
+
 
 - Luego escribí un programa: ""varios-programs/JPLUS_DR2_HaphaVii_table.py"" para convertir el archivo .dat en .tab y manejar mejor los datos, hice esto porque en el archivo que se desacarga del sitio de J-PLUS usando ADQL, tiene la particulidad de que todos los filtros de cada avertura (auto, petro, etc) estan en una misma columna, entonces con este progroma coloco cada filtro en una determinada columna para cada apertura.
 
@@ -17,41 +29,34 @@ Aplicando 1) obtuve 30,683 fuentes
 
 a. Primero apliqué donde cada filtro != 99, los flags y (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5 esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab" 
 
-_______________________________________________________________________________
+
 - Aplicando para esta primera muestra obtuve 10,034 fuentes.
 
  Apliqué pca y obtuve 178 objetos clasificados como PNe. Usando el program in jupyter "Covert from .tab to .dat" sólo escribí las coordenads de las fuentes e hice crossmatching con el catálogo de PNe usando topcat y encontré 8 matches. 
 
 -  3247 como SySt
--------------------------------------------------------------------------------
+
 
 b. Apliqué donde cada filtro != 99,  los flags y (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5 esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. E adicional MASK_flags. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask.tab" 
 
-_______________________________________________________________________________
 - Aplicando para esta muestra obtuve 3,912 fuentes.
 
  Apliqué pca y obtuve 73 objetos clasificados como PNe. Usando el program in jupyter "Covert from .tab to .dat" sólo escribí las coordenads de las fuentes e hice crossmatching con el catálogo de PNe usando topcat y encontré ?? matches. 
 
-- 1958 como SySt
--------------------------------------------------------------------------------
+- 1958 como SySt.
 
 c. Apliqué donde cada filtro != 99,  los flags y (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) <= 2.5 (tab['rSDSS_'+magg] - tab['iSDSS_'+magg]) >= -2.5 (tab['rSDSS_'+magg] - tab['J0660_'+magg]) <= 2.5 esto deacuerdo con el diagrama color de viironen y mis magnitudes sintécticas. E adicional MASK_flags. Apliqué en los errores en los filtros anchos. Obtuve el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad.tab"-- Ojo broad quiere decir que apliqué en los errores de los filtros anchos.  
-________________________________________________________________________________
+
 - Aplicando para esta muestra obtuve 463 fuentes.
  Apliqué pca y obtuve 28 objetos clasificados como PNe. Usando el program in jupyter "Covert from .tab to .dat" sólo escribí las coordenads de las fuentes e hice crossmatching con el catálogo de PNe usando topcat é encontré ?? matches. 
 
 - (123 con sanduleak) 119 como SySt
--------------------------------------------------------------------------------
-########################################
-########################################
-""""""""""""""""""""""""""""""""""""""""
-Me di cuenta que no es necesario limpiar y despues correr las técnicas estadísticas. La idea es correr los algoritmos usando el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab" y después limpiar.
 
-##########################################
-##########################################
-LDA ==>>
-##########################################
-##########################################
++ Me di cuenta que no es necesario limpiar y despues correr las técnicas estadísticas. La idea es correr los algoritmos usando el archivo "Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab" y después limpiar.
+
+
+** LDA ==>>
+
 
 + Modifiqué el programa  para que funcione con J-PLUS IDR2 (lda-jplusdr2_3class_predict.py).
 
@@ -97,11 +102,8 @@ ________________________________________________________________________________
 -- Mask and error broad-band => PNe = 145. SySt=123
 
 ##################################################################################
-* JPLUS DR2 final               ##################################################
-                                ##################################################
-##################################################################################
-+  6Arcsec ##
-##############
+* TODO JPLUS DR2 final              
+**  6Arcsec 
 
 - I ran the query and obtained the file: 72080.csv.
 - Topcat: Halpha_emitters_threeerror.dat
@@ -111,7 +113,7 @@ ________________________________________________________________________________
 - JPLUS_DR2_HaphaVii_cleaning_sample.py Halpha_emitters_threeerror -> Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab (tuve que volver a .tab, no funcionó con .ecsv)
  --- 5727 objectos.
 
-** PCA 
+*** PCA 
 
 I used the program pca-jplusdr2_3class_predict.py to classify, implemented directly in the table Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
 
@@ -206,7 +208,7 @@ I used the program pca-jplusdr2_3class_predict.py to classify, implemented direc
     2. Writing the coordinate to make cross-matching with HASH. PN: only 5 matches. No matches SySt.
     
     
-** LDA 
+*** LDA 
 I used the program default lda-jplusdr2_3class_predict.py, I used the file Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
     : PN=951, SySt=3047
    
