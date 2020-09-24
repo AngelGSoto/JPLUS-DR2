@@ -73,7 +73,6 @@ Después de hacer cross-matching con el catálogo de PNe encontre ocho matches, 
 b. Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask.tab. 253 como PN. 1578 como SySt. Crosmtaching con HASH 7 coincidencias (excelente).
 
 :PROPERTIES: 
-:END:
 
 * TODO Aperture 6 Arc            
 - Corrí el query:
