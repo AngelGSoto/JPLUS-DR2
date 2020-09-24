@@ -72,6 +72,8 @@ Después de hacer cross-matching con el catálogo de PNe encontre ocho matches, 
 
 b. Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask.tab. 253 como PN. 1578 como SySt. Crosmtaching con HASH 7 coincidencias (excelente).
 
+:PROPERTIES: 
+:END:
 
 * TODO Aperture 6 Arc            
 - Corrí el query:
@@ -105,7 +107,16 @@ SELECT * FROM jplus.MagABDualObj WHERE MAG_ERR_APER_6_0[jplus::rSDSS] <= 0.2 AND
 -- Mask and error broad-band => PNe = 145. SySt=123
 
 
-* TODO JPLUS DR2 final              
+* TODO JPLUS DR2 final    
+
+
+I made cross-marching between HASH and DR2 SPLUS. I used the url:
+
+#+LINK: jplus https://archive.cefca.es/catalogues/vo/cone/jplus-dr2/JPLUS.CALIBRATEDMAGABDUALOBJ
+
+I found 12 matches.
+
+          
 ** 6Arcsec 
 
 + I ran the query and obtained the file: =72080.csv=.
