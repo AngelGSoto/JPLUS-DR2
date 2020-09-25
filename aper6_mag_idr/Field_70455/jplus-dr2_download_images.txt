@@ -1,0 +1,13 @@
+#############################################################
+## INSTRUCTIONS: 
+## Save this file in a known directory.
+## Open a console/terminal and go to the directory where you have saved this file.
+## Execute in the console/terminal the following line without the '#' (NOTE: If you have save this file with another name you must replace 'jplus-dr2_download_images.txt' with the name you have put to this file): 
+# wget --no-check-certificate --content-disposition --user=lgutierrez --ask-password -i jplus-dr2_download_images.txt
+##
+#############################################################
+http://archive.cefca.es/catalogues/vo/siap/jplus-dr2/get_fits?id=70452
+http://archive.cefca.es/catalogues/vo/siap/jplus-dr2/get_fits?id=70453
+http://archive.cefca.es/catalogues/vo/siap/jplus-dr2/get_fits?id=70455
+http://archive.cefca.es/catalogues/vo/siap/jplus-dr2/get_fits?id=70456
+http://archive.cefca.es/catalogues/vo/siap/jplus-dr2/get_fits?id=70460

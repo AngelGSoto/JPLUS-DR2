@@ -122,7 +122,7 @@ I found 12 matches.
 + 24048 objectos.
 + Run the follows script to write the table in a more adequate file.  Para crear el archivo =Halpha_emitters_threeerror.tab= (intente ecsv, nuevo formato de archivo, parecen ser mejor que el punto .tab, cortesia del profe Will).
 
-: python ../../Varios-programs/JPLUS_DR2_HaphaVii_table.py Halpha_emitters_threeerror --savefile --debug
+: python ../../varios-programs/JPLUS_DR2_HaphaVii_table.py Halpha_emitters_threeerror --savefile --debug
 
 #+BEGIN_SRC python : change the format of output file from JPLUS
 from astropy.io import fits
@@ -422,12 +422,11 @@ except TypeError:
 
 #+RESULTS:
 file:aper6_mag_idr/Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab 
-: 5727 objectos.
+: 5599 objectos.
 
 Tuve que volver a =.tab=, no funcionó con =.ecsv=.
 Here is nor necessary apply the error criterion in r, F660 and i filter nether =r < 19= because this 
 already is incorporated in the SQL query.
-
 
 *** PCA 
 
@@ -439,6 +438,11 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
 
 
    : PN=236, SySt=2098, 7 macth with HASH.
+
+I ran again PCA with IAG machine, I found very diferent results I have to check that.
+
+#+RESULTS:
+file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-v1.tab
 
 **** Cleaning:
  + With the program =JPLUS_cleaning_table.py=, we will clean the PCA results. It is apply the mask_flags and 
@@ -747,6 +751,15 @@ for i in range(len(n)):
 
 #+END_SRC
    
+**** JPLUS images
+  I started to make the RGB images:
+  + I modified the programs =catalog_utils_v2.py= to inclued the JPLUS ID and the radius petro as the 
+    size of the region.
+  + To write the REGIOn files there is to use:
+    : Writting DS9 regions from JPLUS tables
+  + After this do the tipical procedures cut and made the RGB images. New version of the program
+    to cut =varios-programas/cut-images-fits-v2.py=
+  + I have to continue dolownd the images. The last one ~Field_6863~.
     
 *** LDA 
 I used the program default lda-jplusdr2_3class_predict.py, I used the file Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
