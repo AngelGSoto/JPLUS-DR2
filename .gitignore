@@ -7,3 +7,5 @@
 .#*
 *.fits
 *.fz
+*.log
+*.out

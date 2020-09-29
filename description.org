@@ -754,12 +754,21 @@ for i in range(len(n)):
 **** JPLUS images
   I started to make the RGB images:
   + I modified the programs =catalog_utils_v2.py= to inclued the JPLUS ID and the radius petro as the 
-    size of the region.
+    size of the region. I this modified that, when the radius petro is "0", it put 6 arcsec radi.
   + To write the REGIOn files there is to use:
     : Writting DS9 regions from JPLUS tables
   + After this do the tipical procedures cut and made the RGB images. New version of the program
     to cut =varios-programas/cut-images-fits-v2.py=
-  + I have to continue dolownd the images. The last one ~Field_6863~.
+  + I have to continue dolownd the images. The last one ~Field_6863~. Done.
+  + To make the RGB images of a automatic way as in S-PLUS. I created executable file with
+    : run-rgb-image-v2.py
+    : run-rgb-image-j0660-v2.py
+    
+    The executable files are:
+    : ./run-rgb-image-rjplus.run
+    : ./run-rgb-image-j0660jplus.run
+ 
+**** Creating file latex
     
 *** LDA 
 I used the program default lda-jplusdr2_3class_predict.py, I used the file Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
