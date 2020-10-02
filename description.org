@@ -425,7 +425,7 @@ file:aper6_mag_idr/Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.
 : 5599 objectos.
 
 Tuve que volver a =.tab=, no funcionó con =.ecsv=.
-Here is nor necessary apply the error criterion in r, F660 and i filter nether =r < 19= because this 
+Here is nor necessary apply the error criterion in r, F660 and i filter nether =r < 20= because this 
 already is incorporated in the SQL query.
 
 *** PCA 
@@ -547,6 +547,24 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
   The program displays the color diagrams is
   : python ../../varios-programas/color-diagrams-jplusdr2_automatic.py PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad
   : The number of objects is: 80
+
+  + I putted the known PNe in the color-color diagrams. The format of table after to do cross-matching
+      is different, I have to do two programs more to convert the table in a adequate table =PN_HASH-JPLUS-DR2-v2.tab=
+     : JPLUS_DR2_HaphaVii_table-v2.py
+     : ipython/Convert table in table 
+     - 64343-69243, NAME PN Ra 1 PN?, tiene los errores muy grandes
+     - 70242-18193,  NGC 6543, todos los filtro angostos tienen FlAGS = 4.  
+     - 65251-18195, PN Sp 4-1, MASK
+     - 65750-23436,  NGC 6058, es catalogada como SySt. Pero la real PN es 65750-23821. Solo pega la foto-
+       de la Wd.
+     For these objects I created a individual file with then:
+     : Missing-pne-allinf-v2.tab
+
+     The Jspectra are in the folder: =Jspectra-missingPN=.
+    
+    And of course a new program to make the color diagrams
+     : color-diagrams-jplusdr2_automatic-2tables.py
+
 **** JPLUS spectra
   
   I made the JPLUS-spectra of these 80 objects.
@@ -753,22 +771,41 @@ for i in range(len(n)):
    
 **** JPLUS images
   I started to make the RGB images:
+  + Download the images>
+    -Convert in FITS format.
+    : for f in *.fz; do python ../../../varios-programas/convert-fz-fits.py ${f%.fz} ; done   
   + I modified the programs =catalog_utils_v2.py= to inclued the JPLUS ID and the radius petro as the 
     size of the region. I this modified that, when the radius petro is "0", it put 6 arcsec radi.
-  + To write the REGIOn files there is to use:
+  + To write the REGIOn files we have to use:
     : Writting DS9 regions from JPLUS tables
   + After this do the tipical procedures cut and made the RGB images. New version of the program
     to cut =varios-programas/cut-images-fits-v2.py=
-  + I have to continue dolownd the images. The last one ~Field_6863~. Done.
+    : for f in *_swp.fits; for e in *.reg; do python ../../../varios-programas/cut-images-fits-v2.py ${f%_swp.fits} --position ${e%.reg} --debug; done
+
+  + I have to continue download the images. The last one ~Field_6863~. Done.
   + To make the RGB images of a automatic way as in S-PLUS. I created executable file with
     : run-rgb-image-v2.py
     : run-rgb-image-j0660-v2.py
-    
+   
+    convert in executable file:
+    : chmod +x run-rgb-image-j0660jplus.run
+
     The executable files are:
     : ./run-rgb-image-rjplus.run
     : ./run-rgb-image-j0660jplus.run
+
+    To run the RGB program to one source.
+    : python ../../../varios-programas/rgb_image-v2.py 1000001-JPLUS-01066-v202006_J0861_63864-47481_swp-crop 1000001-JPLUS-01066-v202006_J0660_63864-47481_swp-crop 000001-JPLUS-01066-v202006_J0515_63864-47481_swp-crop --position 63864-47481_position --debug
  
 **** Creating file latex
+  + I created a program to the de latex file:
+    : latex-images-jplus.py
+  + The latex file is:
+    : pne-jlusdr2.tex
+  + I wrote a programs to only take the known PN.
+    : latex-images-jplusknown.py
+ 
+
     
 *** LDA 
 I used the program default lda-jplusdr2_3class_predict.py, I used the file Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
