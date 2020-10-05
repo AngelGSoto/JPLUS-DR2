@@ -49,50 +49,78 @@
 \begin{figure}
 \centering
 \begin{tabular}{l l}
-  \includegraphics[width=0.5\linewidth, trim=10 15 5 8, clip]{../../../Dropbox/JPAS/Tesis/Fig/DdDm-1-HPNe-SPLUS18-magnitude-paper.pdf}
-   \includegraphics[width=0.52\linewidth, trim=5 15 5 8, clip]{../../../Dropbox/JPAS/Tesis/Fig/DdDm1_L4_T200_output_SED-tere_E02_600-JPLUS17-magnitude-paper.pdf}
+  \includegraphics[width=\linewidth, trim=10 15 5 8, clip]{../../../Dropbox/JPAS/Tesis/Fig/Fig-JPLUS17-Viironen-HalphaEmitters.pdf}
+   %\includegraphics[width=0.52\linewidth, trim=5 15 5 8, clip]{../../../../../../home/angel/Dropbox/JPAS/Tesis/Fig/DdDm1_L4_T200_output_SED-tere_E02_600-JPLUS17-magnitude-paper.pdf}
   \end{tabular}  
 \end{figure}
 
-\begin{figure*}
-%\setlength\tabcolsep{\figstampcolsep}
-\centering
-\begin{tabular}{l l}
- \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../../Dropbox/JPAS/Tesis/Fig/Fig1-JPLUS17-Viironen.pdf} & \\
- \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../../Dropbox/JPAS/Tesis/Fig/Fig2-JPLUS17-J0515-J0660.pdf} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../../Dropbox/JPAS/Tesis/Fig/Fig5-JPLUS17-J0660-r.pdf} \\
-%\raiselabel{(\textit{a})} & \raiselabel{(\textit{b})}\\
-\includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../../Dropbox/JPAS/Tesis/Fig/Fig3-JPLUS17-z-g.pdf} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../../Dropbox/JPAS/Tesis/Fig/Fig6-JPLUS17-g-i.pdf} \\
-%\raiselabel{(\textit{c})} & \raiselabel{(\textit{d})}
-  
-  \end{tabular}
-\end{figure*}
+\section{Introduction}
+\label{sec:into}
+
+\subsection{Antecedents}
+\label{sec:antec}
+
+In (2020A\&A...633A.123G) is presented a number of colour-colour diagrams to discriminate PN from their contaminants of the most efficient way using the novel surveys J-PLUS and S-PLUS. The main disadvantage of this methodology is the great effort and time that is required to find the best combination of colour to do that. After that it is necessary to establish the selection criteria. Another disadvantage consists of that on this method does not use all the filters of the surveys. Note that to create the colour criterion in this works only were used the filters: ..... For this reason, even if with the colour criteria the selection of the sources is done of an automatic way, in this new era of multi-band surveys it is necessary to used techniques even more automatic that use all the bands to guarantee a better identification of our targets.I mean to avoid misclassification.        
+ 
+\section{Methodology}
+\label{sec:into}
+
+\subsection{Dimension reduction algorithm: PCA}
+\label{sec:pca-lda}
+
+The strength of PCA for data analysis comes from its efficient computational mechanism,the fact that it is well understood, and from its general applicability (J. Novakovic, S. Rankov, Vol. VI (2011), No. 2 (June), pp. 317-327). This is a good paper comparing the performance of  the classifier methods with and without using PCA.
+
+This is especially effective for classification algorithmsthat do not have any inherent feature selections or feature extraction builds in, such as thenearest neighbour methods or some types of neural networks.
+
+Maybe it will be good idea to combine PCA with the Bayes algorithm classifier. 
+
 
 \begin{figure*}
 %\setlength\tabcolsep{\figstampcolsep}
 \centering
 \begin{tabular}{l l}
-\includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca/Fig1-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-vironen.pdf} & \\
- \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca/Fig2-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-J0515_J0660.pdf} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca/Fig3-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-z.pdf} \\
+ \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../Plots-splus/Fig1-SPLUS18-PC1-PC2-orig.pdf} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../Plots-splus/Fig1-SPLUS18-PC1-PC2_SMOTE.jpg} \\
 %\raiselabel{(\textit{a})} & \raiselabel{(\textit{b})}\\
-\includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca/Fig4-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-g.pdf} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca/Fig5-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-gi.pdf} \\
+\includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../Plots-splus/Fig2-JPLUS18-PC1-PC3.jpg} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{../../Plots-splus/Fig2-JPLUS18-PC1-PC3_SMOTE.jpg} 
+%\raiselabel{(\textit{c})} & \raiselabel{(\textit{d})}
+\end{tabular}
+\end{figure*}
+
+\subsection{Classifier algorithms: logistic regression}
+\label{sec:Classifiers}
+
+\subsection{Synthetic Oversampling: SMOTE}
+\label{sec:smote}
+
+The class distribution in many applications on classifier algorithms is not balanced. Our sample used here is highly imbalanced 3,700 PNe (including modeled and observed), 25 SySt, 25 H~{\sc ii} regions and approximately  2,385 all else. This means that SySt accounts for  0.4\% of all sample. The straightforward application of classification algorithms may lead to misleading results because of the preponderance of the PN class. A Bayesian classifier will have biased priors that favor the majority class in our case the PN sample represents the majority class.
+
+
+\begin{figure*}
+%\setlength\tabcolsep{\figstampcolsep}
+\centering
+\begin{tabular}{l l}
+\includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca-v1/Fig1-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-vironen-v2.pdf} & \\
+ \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca-v1/Fig2-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-J0515_J0660-v2.pdf} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca-v1/Fig3-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-z-v2.pdf} \\
+%\raiselabel{(\textit{a})} & \raiselabel{(\textit{b})}\\
+\includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca-v1/Fig4-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-g.pdf} & \includegraphics[width=0.5\linewidth, trim=10 10 10 10, clip]{figs-pca-v1/Fig5-PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-gi-v2.pdf} \\
 %\raiselabel{(\textit{c})} & \raiselabel{(\textit{d})}
 \end{tabular}
 \caption{}
 \label{fig:smppne}
 \end{figure*}
 
- (see Fig.~\ref{fig:smppne}),
 
-
-\newpage
+\clearpage
 \begin{longtable}{ccc}
   \input{table-images-pnknown.tex}
 \end{longtable}
 
-
-\newpage
+\clearpage
+\subsection{J-spectra and images of the selected objects}
+\label{sec:smote}
 \begin{longtable}{ccc}
-  \input{table-images.tex}
-\end{longtable}
+\input{table-images.tex}
+\end{longtable} 
+
 
 \end{document}
