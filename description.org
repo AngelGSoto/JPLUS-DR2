@@ -560,7 +560,7 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
      For these objects I created a individual file with then:
      : Missing-pne-allinf-v2.tab
 
-     The Jspectra are in the folder: =Jspectra-missingPN=.
+     The J-spectra are in the folder: =Jspectra-missingPN=.
     
     And of course a new program to make the color diagrams
      : color-diagrams-jplusdr2_automatic-2tables.py
@@ -805,7 +805,6 @@ for i in range(len(n)):
   + I wrote a programs to only take the known PN.
     : latex-images-jplusknown.py
  
-
     
 *** LDA 
 I used the program default lda-jplusdr2_3class_predict.py, I used the file Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
