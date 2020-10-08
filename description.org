@@ -430,7 +430,7 @@ already is incorporated in the SQL query.
 
 *** PCA 
 
-I used the program =pca-jplusdr2_3class_predict.py= to classify, implemented directly in 
+I used the program =pca-jplusdr2_3class_predict.py= to classify, implementing directly in 
 the table =Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab=
 
 #+RESULTS:
@@ -439,7 +439,7 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
 
    : PN=236, SySt=2098, 7 macth with HASH.
 
-I ran again PCA with IAG machine, I found very diferent results I have to check that.
+I ran again PCA with IAG machine, I found very different results I have to check that.
 
 #+RESULTS:
 file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-v1.tab
@@ -538,6 +538,24 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
 1. mask and error broad filters: PN = 80 and SySt = 126 (it was a big reduction).
 2. Writing the coordinate to make cross-matching with HASH. PN: only 5 matches. No matches SySt.
  
++ Cleaning again applying the error criterion all bands
+  1. =PN = 57=
+  2. 4 known PNe
+
+#+RESULTS:
+file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-narrow.tab
+
++ Cleaning making a cut in the ~P(PNe) >= 0.75~.
+
+#+RESULTS:
+file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-prob.tab
+
++ Cleaning applying the error a cut in the ~P(PNe) >= 0.75~.
+
+#+RESULTS:
+file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-narrow-prob.tab
+
+
 **** JPLUS color criteria
  
   I putted the objects of the table =/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad.tab=
@@ -564,6 +582,11 @@ file:aper6_mag_idr/PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-
     
     And of course a new program to make the color diagrams
      : color-diagrams-jplusdr2_automatic-2tables.py
+
+   + Making the color diagrams with the narrow error criteria
+     : python ../../varios-programas/color-diagrams-jplusdr2_automatic-2tables.py PN-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-narrow PN_HASH-JPLUS-DR2-v2
+
+   + I finally made color diagrams for the different tables after to apply the criteria.
 
 **** JPLUS spectra
   
