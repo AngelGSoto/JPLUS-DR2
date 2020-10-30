@@ -840,3 +840,7 @@ I used the program default lda-jplusdr2_3class_predict.py, I used the file Halph
 
     1. mask and error broad filters: PN = 245 and SySt = 171 (it was a big reduction).
     2. Writing the coordinate to make cross-matching with HASH. PN: only 6 matches. No matches SySt.
+** Comments
+My favorite objects:
+:  68634-15941
+:  70455-1485
