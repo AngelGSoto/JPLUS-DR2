@@ -428,7 +428,7 @@ Tuve que volver a =.tab=, no funcionó con =.ecsv=.
 Here is nor necessary apply the error criterion in r, F660 and i filter nether =r < 20= because this 
 already is incorporated in the SQL query.
 
-*** PCA 
+*** PCA (PNe)
 
 I used the program =pca-jplusdr2_3class_predict.py= to classify, implementing directly in 
 the table =Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab=
@@ -828,7 +828,31 @@ for i in range(len(n)):
   + I wrote a programs to only take the known PN.
     : latex-images-jplusknown.py
  
-    
+
+*** PCA (SySt)
+  
+
+I have analyzed the list of symbiotic stars. 
+
+After further cleaning I have the list
+: SySt-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad.dat
+: 126 SySt
+
+Cut at probability >=0.75
+: SySt-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-prob.dat
+: 42 SySt
+
+Find the coincidence in 2MASS
+: 2MASS-SySt-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-prob.dat
+: 37  SySt
+
+Putting in a table Combining the JPLUS magnitudes and 2MASS magnitudes
+: JPLUSmag-2MASSmag-SySt-pc-Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags-mask-broad-prob.dat
+
+A have analyzed  this previous results
+
+See =Analizing SySt candidates JPLUS DR2.ipynb=
+
 *** LDA 
 I used the program default lda-jplusdr2_3class_predict.py, I used the file Halpha_emitters_threeerror-cleaning-limfilter-limcolor-flags.tab
     : PN=951, SySt=3047
